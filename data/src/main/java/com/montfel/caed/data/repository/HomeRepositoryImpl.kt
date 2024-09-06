@@ -1,19 +1,21 @@
 package com.montfel.caed.data.repository
 
 import com.montfel.caed.data.mapper.toBox
+import com.montfel.caed.data.mapper.toStatus
 import com.montfel.caed.data.service.HomeService
 import com.montfel.caed.domain.model.Box
+import com.montfel.caed.domain.model.Status
 import com.montfel.caed.domain.repository.HomeRepository
 import javax.inject.Inject
 
 class HomeRepositoryImpl @Inject constructor(
-    private val service: HomeService
-): HomeRepository {
+    private val service: HomeService,
+) : HomeRepository {
     override suspend fun getHome(): Box {
         return service.getHome().toBox()
     }
 
-    override suspend fun getPackageDetail(code: String): Any {
-        TODO("Not yet implemented")
+    override suspend fun getPackageDetail(code: String): List<Status> {
+        return service.getPackageDetail(code).map { it.toStatus() }
     }
 }

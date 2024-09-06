@@ -9,9 +9,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.montfel.caed.domain.model.Status
 
 @Composable
-fun PackageStatus() {
+fun PackageStatus(status: List<Status>) {
     Column {
         Spacer(modifier = Modifier.height(22.dp))
 
@@ -19,6 +20,6 @@ fun PackageStatus() {
 
         Spacer(modifier = Modifier.height(19.dp))
 
-//        Historical()
+        Timeline(status)
     }
 }

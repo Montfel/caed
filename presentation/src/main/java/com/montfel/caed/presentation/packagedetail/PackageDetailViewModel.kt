@@ -1,4 +1,4 @@
-package com.montfel.caed.presentation.home
+package com.montfel.caed.presentation.packagedetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,22 +11,24 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class PackageDetailViewModel @Inject constructor(
     private val homeRepository: HomeRepository,
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow(HomeUiState())
+    private val _uiState = MutableStateFlow(PackageDetailUiState())
     val uiState = _uiState.asStateFlow()
 
-    init {
-        getHome()
+    fun onEvent(event: PackageDetailEvent) {
+        when (event) {
+            is PackageDetailEvent.GetPackageDetail -> getPackageDetail(event.code)
+        }
     }
 
-    private fun getHome() {
+    private fun getPackageDetail(code: String) {
         viewModelScope.launch {
-            val box = homeRepository.getHome()
+            val status = homeRepository.getPackageDetail(code)
 
             _uiState.update {
-                it.copy(box = box)
+                it.copy(status = status)
             }
         }
     }

@@ -18,13 +18,15 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.montfel.caed.presentation.components.NavigationBarCustom
 import com.montfel.caed.presentation.components.PackageStatus
 import com.montfel.caed.presentation.theme.Gray
@@ -36,8 +38,15 @@ fun PackageDetailScreen(
     code: String,
     onNavigateBack: () -> Unit,
 ) {
+    val viewModel: PackageDetailViewModel = hiltViewModel()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     val selectedTabIndex by rememberSaveable { mutableIntStateOf(0) }
     val titles = listOf("Status", "Dados")
+
+    LaunchedEffect(Unit) {
+        viewModel.onEvent(PackageDetailEvent.GetPackageDetail(code))
+    }
 
     Scaffold(
         topBar = {
@@ -97,7 +106,9 @@ fun PackageDetailScreen(
 
                 when (selectedTabIndex) {
                     0 -> {
-                        PackageStatus()
+                        uiState.status?.let {
+                            PackageStatus(it)
+                        }
                     }
                 }
             }
