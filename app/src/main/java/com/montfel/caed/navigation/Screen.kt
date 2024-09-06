@@ -11,5 +11,7 @@ sealed interface Screen {
     data object Home : Screen
 
     @Serializable
-    data object PackageDetail : Screen
+    data class PackageDetail(
+        val code: String
+    ) : Screen
 }

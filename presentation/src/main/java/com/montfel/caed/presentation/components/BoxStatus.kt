@@ -18,6 +18,6 @@ fun BoxStatus(status: List<Status>) {
 
         Spacer(modifier = Modifier.height(19.dp))
 
-        Historical()
+        Historical(status)
     }
 }

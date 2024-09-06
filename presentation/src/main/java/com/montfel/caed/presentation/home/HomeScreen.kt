@@ -42,7 +42,7 @@ import com.montfel.caed.presentation.theme.GrayE3
 @Composable
 fun HomeScreen(
     onNavigateBack: () -> Unit,
-    onNavigateToPackageDetail: () -> Unit,
+    onNavigateToPackageDetail: (code: String) -> Unit,
 ) {
     val viewModel: HomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -132,7 +132,9 @@ fun HomeScreen(
                     }
 
                     2 -> {
-                        Data()
+                        uiState.box?.data?.let {
+                            Data(it)
+                        }
                     }
                 }
             }

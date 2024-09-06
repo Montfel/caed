@@ -19,12 +19,6 @@ fun PackageStatus() {
 
         Spacer(modifier = Modifier.height(19.dp))
 
-        Card {
-            LazyColumn {
-                items(4) {
-                    HistoricalItem()
-                }
-            }
-        }
+//        Historical()
     }
 }

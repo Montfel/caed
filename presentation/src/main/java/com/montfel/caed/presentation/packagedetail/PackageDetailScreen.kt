@@ -33,6 +33,7 @@ import com.montfel.caed.presentation.theme.GrayE3
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PackageDetailScreen(
+    code: String,
     onNavigateBack: () -> Unit,
 ) {
     val selectedTabIndex by rememberSaveable { mutableIntStateOf(0) }
@@ -42,7 +43,7 @@ fun PackageDetailScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Pacote de 12321423524")
+                    Text(text = "Pacote $code")
                 },
                 navigationIcon = {
                     IconButton(

@@ -20,7 +20,7 @@ import com.montfel.caed.domain.model.Package
 import com.montfel.caed.presentation.R
 
 @Composable
-fun Packages(packages: List<Package>, onClick: () -> Unit) {
+fun Packages(packages: List<Package>, onClick: (code: String) -> Unit) {
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -49,7 +49,7 @@ fun Packages(packages: List<Package>, onClick: () -> Unit) {
             items(packages) { packageItem ->
                 PackageItem(
                     packageItem = packageItem,
-                    onClick = onClick
+                    onClick = { onClick(packageItem.code) }
                 )
 
                 HorizontalDivider(thickness = 2.dp)

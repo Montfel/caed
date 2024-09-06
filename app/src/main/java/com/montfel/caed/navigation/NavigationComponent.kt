@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.montfel.caed.presentation.home.HomeScreen
 import com.montfel.caed.presentation.login.LoginScreen
 import com.montfel.caed.presentation.packagedetail.PackageDetailScreen
@@ -20,12 +21,17 @@ fun NavigationComponent() {
         composable<Screen.Home> {
             HomeScreen(
                 onNavigateBack = navController::popBackStack,
-                onNavigateToPackageDetail = { navController.navigate(Screen.PackageDetail) }
+                onNavigateToPackageDetail = { navController.navigate(Screen.PackageDetail(it)) }
             )
         }
 
         composable<Screen.PackageDetail> {
-            PackageDetailScreen(onNavigateBack = navController::popBackStack)
+            val (code) = it.toRoute<Screen.PackageDetail>()
+
+            PackageDetailScreen(
+                code = code,
+                onNavigateBack = navController::popBackStack
+            )
         }
     }
 }

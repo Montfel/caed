@@ -5,17 +5,18 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
+import com.montfel.caed.domain.model.Status
 
 @Composable
-fun HistoricalItem() {
+fun HistoricalItem(status: Status) {
     Row {
         Column {
-            Text(text = "24/08/23")
-            Text(text = "14:32")
+            Text(text = status.time)
+            Text(text = status.time)
         }
 
         VerticalDivider()
 
-        Text(text = "Coordenador recebeuu a caixa")
+        Text(text = status.description)
     }
 }
