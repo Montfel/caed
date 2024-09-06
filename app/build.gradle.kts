@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
-    id(libs.plugins.google.services.get().pluginId)
+//    id(libs.plugins.google.services.get().pluginId)
     id(libs.plugins.hilt.get().pluginId)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
@@ -19,7 +19,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "com.montfel.notes.di.HiltTestRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -56,17 +56,17 @@ android {
 }
 
 dependencies {
-    implementation(projects.data)
-    implementation(projects.domain)
-    implementation(projects.presentation)
+//    implementation(projects.data)
+//    implementation(projects.domain)
+//    implementation(projects.presentation)
 
     implementation(libs.activity)
     implementation(libs.core)
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.analytics)
-    implementation(libs.firebase.messaging)
+//    implementation(platform(libs.firebase.bom))
+//    implementation(libs.firebase.analytics)
+//    implementation(libs.firebase.messaging)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation)
