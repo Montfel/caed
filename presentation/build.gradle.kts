@@ -1,28 +1,20 @@
 plugins {
-    alias(libs.plugins.android.application)
-//    id(libs.plugins.google.services.get().pluginId)
-    id(libs.plugins.hilt.get().pluginId)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
+    id(libs.plugins.hilt.get().pluginId)
     alias(libs.plugins.compose.compiler)
 }
 
 android {
-    namespace = "com.montfel.caed"
+    namespace = "com.montfel.caed.presentation"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.montfel.caed"
-        minSdk = 26
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = 24
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -56,29 +48,21 @@ android {
 }
 
 dependencies {
-    implementation(projects.data)
     implementation(projects.domain)
-    implementation(projects.presentation)
 
-    implementation(libs.activity)
     implementation(libs.core)
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation)
+    ksp(libs.hilt.compiler)
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
-    implementation(libs.hilt.navigation)
     implementation(libs.bundles.lifecycle)
     implementation(libs.kotlin.serialization.json)
-    implementation(libs.navigation)
 
     debugImplementation(libs.compose.ui.test.manifest)
 
     testImplementation(libs.junit.test)
     androidTestImplementation(libs.espresso)
     androidTestImplementation(libs.junit.test.android)
-    androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.compose.ui.test.junit4)
-    androidTestImplementation(libs.hilt.testing)
-    kspAndroidTest(libs.hilt.compiler)
-    androidTestImplementation(libs.test.rules)
 }

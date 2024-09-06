@@ -4,8 +4,8 @@ androidGradlePlugin = "8.5.2"
 compose = "2024.09.00"
 core = "1.13.1"
 espresso = "3.6.1"
-firebase = "33.2.0"
 googleServices = "4.4.2"
+gson = "2.11.0"
 hilt = "2.51.1"
 hiltNavigation = "1.2.0"
 junit = "4.13.2"
@@ -17,7 +17,6 @@ ksp = "2.0.20-1.0.24"
 lifecycle = "2.8.5"
 mockk = "1.13.12"
 navigation = "2.8.0"
-room = "2.6.1"
 retrofit = "2.11.0"
 testRules = "1.6.1"
 truth = "1.4.2"
@@ -26,7 +25,6 @@ truth = "1.4.2"
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
@@ -44,7 +42,7 @@ compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 core = { module = "androidx.core:core-ktx", version.ref = "core" }
 espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 hilt-core = { module = "com.google.dagger:hilt-core", version.ref = "hilt" }
@@ -61,12 +59,10 @@ mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-gson-converter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 test-rules = { module = "androidx.test:rules", version.ref = "testRules" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 
 [bundles]
 compose = ["compose-material3", "compose-foundation", "compose-ui-tooling", "compose-ui-tooling-preview"]
 lifecycle = ["lifecycle-ktx", "lifecycle-compose"]
+retrofit = ["retrofit", "gson", "retrofit-gson-converter"]

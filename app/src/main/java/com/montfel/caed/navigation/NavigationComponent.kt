@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.montfel.caed.home.HomeScreen
-import com.montfel.caed.login.LoginScreen
-import com.montfel.caed.packagedetail.PackageDetailScreen
+import com.montfel.caed.presentation.home.HomeScreen
+import com.montfel.caed.presentation.login.LoginScreen
+import com.montfel.caed.presentation.packagedetail.PackageDetailScreen
 
 @Composable
 fun NavigationComponent() {

@@ -19,6 +19,11 @@ dependencyResolutionManagement {
     }
 }
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 rootProject.name = "CAEd"
 include(":app")
- 
+
+include(":data")
+include(":domain")
+include(":presentation")

@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.montfel.caed.navigation.NavigationComponent
-import com.montfel.caed.ui.theme.CAEdTheme
+import com.montfel.caed.presentation.theme.CAEdTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
