@@ -22,17 +22,18 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.montfel.caed.domain.model.Package
 import com.montfel.caed.domain.model.StatusType
-import com.montfel.caed.presentation.theme.Blue24
+import com.montfel.caed.presentation.theme.Blue36
 import com.montfel.caed.presentation.theme.BlueAE
 import com.montfel.caed.presentation.theme.Gray82
 import com.montfel.caed.presentation.theme.GrayCC
 
 @Composable
 fun PackageItem(packageItem: Package, onClick: () -> Unit) {
-    val (firstColor, secondColor) = when(packageItem.status) {
-        StatusType.MISSING -> GrayCC to GrayCC
-        StatusType.RECEIVED -> BlueAE to GrayCC
-        StatusType.RETURNED -> BlueAE to Blue24
+    val (firstColor, secondColor) = when (packageItem.status) {
+        StatusType.MISSING_PACKAGE -> GrayCC to GrayCC
+        StatusType.RECEIVED_PACKAGE -> BlueAE to GrayCC
+        StatusType.RETURNED_PACKAGE -> BlueAE to Blue36
+        else -> GrayCC to GrayCC
     }
 
     Row(

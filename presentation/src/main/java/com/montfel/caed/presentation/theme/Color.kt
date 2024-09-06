@@ -18,4 +18,7 @@ val GrayF0 = Color(0xFFF0F0F0)
 
 val BlueCD = Color(0xFFCDE7EC)
 val BlueAE = Color(0xFFAEF3FE)
-val Blue24 = Color(0xFF247CE4)
+val Blue36 = Color(0xFF3656FF)
+
+val GreenA6 = Color(0xFFA6F5CA)
+val Green0C = Color(0xFF0CB560)

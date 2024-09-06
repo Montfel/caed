@@ -17,11 +17,23 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.montfel.caed.domain.model.Status
-import com.montfel.caed.presentation.theme.Blue24
+import com.montfel.caed.domain.model.StatusType
+import com.montfel.caed.presentation.theme.Blue36
+import com.montfel.caed.presentation.theme.BlueAE
 import com.montfel.caed.presentation.theme.GrayCC
+import com.montfel.caed.presentation.theme.Green0C
+import com.montfel.caed.presentation.theme.GreenA6
 
 @Composable
 fun TimelineItem(status: Status) {
+    val color = when (status.status) {
+        StatusType.MISSING_PACKAGE -> GrayCC
+        StatusType.RECEIVED_PACKAGE, StatusType.OPENED_BOX -> BlueAE
+        StatusType.RETURNED_PACKAGE, StatusType.READ_BOX -> Blue36
+        StatusType.RECEIVED_BOX -> GreenA6
+        StatusType.RETURNED_BOX -> Green0C
+    }
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -51,7 +63,7 @@ fun TimelineItem(status: Status) {
                 modifier = Modifier
                     .size(16.dp)
                     .clip(CircleShape)
-                    .background(Blue24)
+                    .background(color)
             )
         }
 

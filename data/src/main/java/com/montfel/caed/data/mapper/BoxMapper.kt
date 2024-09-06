@@ -5,8 +5,9 @@ import com.montfel.caed.domain.model.Box
 
 fun BoxDto.toBox(): Box {
     return Box(
+        quantities = quantities.map { it.toQuantity() },
         packages = packages.map { it.toPackage() },
         status = status.map { it.toStatus() },
-        data = data.toData()
+        data = data.toData(),
     )
 }

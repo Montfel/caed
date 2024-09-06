@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -33,7 +34,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.montfel.caed.presentation.components.BoxStatus
 import com.montfel.caed.presentation.components.Data
 import com.montfel.caed.presentation.components.NavigationBarCustom
-import com.montfel.caed.presentation.components.PackageTypeCard
+import com.montfel.caed.presentation.components.QuantityCard
 import com.montfel.caed.presentation.components.Packages
 import com.montfel.caed.presentation.theme.Gray
 import com.montfel.caed.presentation.theme.GrayE3
@@ -84,8 +85,10 @@ fun HomeScreen(
                 contentPadding = PaddingValues(horizontal = 21.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
             ) {
-                items(2) {
-                    PackageTypeCard()
+                uiState.box?.quantities?.let {
+                    items(it) { quantity ->
+                        QuantityCard(quantity)
+                    }
                 }
             }
 

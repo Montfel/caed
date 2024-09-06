@@ -22,7 +22,10 @@ fun Data(data: Data) {
     ) {
         Spacer(modifier = Modifier.height(35.dp))
 
-        Text(text = "Dados da caixa")
+        Text(
+            text = "Dados da caixa",
+            fontWeight = FontWeight.Bold
+        )
 
         Spacer(modifier = Modifier.height(21.dp))
 

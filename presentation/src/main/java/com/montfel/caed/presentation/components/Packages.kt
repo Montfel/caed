@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.montfel.caed.domain.model.Package
 import com.montfel.caed.presentation.R
@@ -36,7 +37,10 @@ fun Packages(packages: List<Package>, onClick: (code: String) -> Unit) {
                 modifier = Modifier.size(24.dp)
             )
 
-            Text(text = "Lista de pacotes")
+            Text(
+                text = "Lista de pacotes",
+                fontWeight = FontWeight.Bold
+            )
         }
 
         Spacer(modifier = Modifier.height(20.dp))
