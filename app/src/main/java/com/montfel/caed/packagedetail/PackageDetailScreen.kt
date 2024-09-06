@@ -1,14 +1,11 @@
-package com.montfel.caed.home
+package com.montfel.caed.packagedetail
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -28,33 +25,24 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.montfel.caed.components.Data
 import com.montfel.caed.components.NavigationBarCustom
-import com.montfel.caed.components.PackageTypeCard
-import com.montfel.caed.components.Packages
-import com.montfel.caed.components.BoxStatus
+import com.montfel.caed.components.PackageStatus
 import com.montfel.caed.ui.theme.Gray
 import com.montfel.caed.ui.theme.GrayE3
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(
+fun PackageDetailScreen(
     onNavigateBack: () -> Unit,
-    onNavigateToPackageDetail: () -> Unit
 ) {
-    val viewModel: HomeViewModel = hiltViewModel()
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
     var selectedTabIndex by rememberSaveable { mutableIntStateOf(0) }
-    val titles = listOf("Pacotes", "Status", "Dados")
+    val titles = listOf("Status", "Dados")
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Listagem de pacotes")
+                    Text(text = "Pacote de 12321423524")
                 },
                 navigationIcon = {
                     IconButton(
@@ -78,21 +66,10 @@ fun HomeScreen(
         Column(
             modifier = Modifier.padding(paddingValues)
         ) {
-            Spacer(modifier = Modifier.height(6.dp))
-
-            LazyRow(
-                contentPadding = PaddingValues(horizontal = 21.dp),
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-            ) {
-                items(2) {
-                    PackageTypeCard()
-                }
-            }
-
-            Spacer(modifier = Modifier.height(18.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
             Column(
-                modifier = Modifier.padding(horizontal = 15.dp)
+                modifier = Modifier.padding(horizontal = 16.dp)
             ) {
                 TabRow(
                     selectedTabIndex = selectedTabIndex,
@@ -105,8 +82,8 @@ fun HomeScreen(
                 ) {
                     titles.forEachIndexed { index, title ->
                         Tab(
-                            selected = selectedTabIndex == index,
-                            onClick = { selectedTabIndex = index },
+                            selected = index == 0,
+                            onClick = {},
                             modifier = Modifier.height(50.dp)
                         ) {
                             Text(
@@ -119,15 +96,7 @@ fun HomeScreen(
 
                 when (selectedTabIndex) {
                     0 -> {
-                        Packages(onClick = onNavigateToPackageDetail)
-                    }
-
-                    1 -> {
-                        BoxStatus()
-                    }
-
-                    2 -> {
-                        Data()
+                        PackageStatus()
                     }
                 }
             }

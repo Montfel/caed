@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.montfel.caed.home.HomeScreen
 import com.montfel.caed.login.LoginScreen
+import com.montfel.caed.packagedetail.PackageDetailScreen
 
 @Composable
 fun NavigationComponent() {
@@ -19,12 +20,12 @@ fun NavigationComponent() {
         composable<Screen.Home> {
             HomeScreen(
                 onNavigateBack = navController::popBackStack,
-                onNavigateToPackageDetail = { navController.navigate(Screen.PackageDetail)}
+                onNavigateToPackageDetail = { navController.navigate(Screen.PackageDetail) }
             )
         }
 
         composable<Screen.PackageDetail> {
-
+            PackageDetailScreen(onNavigateBack = navController::popBackStack)
         }
     }
 }
