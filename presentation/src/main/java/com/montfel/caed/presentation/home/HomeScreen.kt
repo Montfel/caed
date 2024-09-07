@@ -35,21 +35,46 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.montfel.caed.presentation.R
 import com.montfel.caed.presentation.components.BoxStatus
 import com.montfel.caed.presentation.components.Data
+import com.montfel.caed.presentation.components.ErrorScreen
+import com.montfel.caed.presentation.components.LoadingScreen
 import com.montfel.caed.presentation.components.NavigationBarCustom
 import com.montfel.caed.presentation.components.Packages
 import com.montfel.caed.presentation.components.QuantityCard
 import com.montfel.caed.presentation.theme.Gray
 import com.montfel.caed.presentation.theme.GrayE3
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(
+fun HomeRoute(
     onNavigateBack: () -> Unit,
     onNavigateToPackageDetail: (code: String) -> Unit,
 ) {
     val viewModel: HomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
+    when(uiState.stateOfUi) {
+        HomeStateOfUi.Error -> {
+            ErrorScreen(onClick = {})
+        }
+        HomeStateOfUi.Loading -> {
+            LoadingScreen()
+        }
+        HomeStateOfUi.Success -> {
+            HomeScreen(
+                uiState = uiState,
+                onNavigateBack = onNavigateBack,
+                onNavigateToPackageDetail = onNavigateToPackageDetail
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HomeScreen(
+    uiState: HomeUiState,
+    onNavigateBack: () -> Unit,
+    onNavigateToPackageDetail: (code: String) -> Unit,
+) {
     var selectedTabIndex by rememberSaveable { mutableIntStateOf(0) }
     val titles = listOf(
         stringResource(R.string.packages),

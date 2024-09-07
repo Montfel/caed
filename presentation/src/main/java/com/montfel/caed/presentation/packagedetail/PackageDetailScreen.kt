@@ -29,26 +29,53 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.montfel.caed.presentation.R
+import com.montfel.caed.presentation.components.ErrorScreen
+import com.montfel.caed.presentation.components.LoadingScreen
 import com.montfel.caed.presentation.components.NavigationBarCustom
 import com.montfel.caed.presentation.components.PackageStatus
 import com.montfel.caed.presentation.theme.Gray
 import com.montfel.caed.presentation.theme.GrayE3
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PackageDetailScreen(
+fun PackageDetailRoute(
     code: String,
     onNavigateBack: () -> Unit,
 ) {
     val viewModel: PackageDetailViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    val selectedTabIndex by rememberSaveable { mutableIntStateOf(0) }
-    val titles = listOf(stringResource(R.string.status), stringResource(R.string.data))
-
     LaunchedEffect(Unit) {
         viewModel.onEvent(PackageDetailEvent.GetPackageDetail(code))
     }
+
+    when (uiState.stateOfUi) {
+        PackageDetailStateOfUi.Error -> {
+            ErrorScreen(onClick = {})
+        }
+
+        PackageDetailStateOfUi.Loading -> {
+            LoadingScreen()
+        }
+
+        PackageDetailStateOfUi.Success -> {
+            PackageDetailScreen(
+                uiState = uiState,
+                code = code,
+                onNavigateBack = onNavigateBack
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PackageDetailScreen(
+    uiState: PackageDetailUiState,
+    code: String,
+    onNavigateBack: () -> Unit,
+) {
+    val selectedTabIndex by rememberSaveable { mutableIntStateOf(0) }
+    val titles = listOf(stringResource(R.string.status), stringResource(R.string.data))
 
     Scaffold(
         topBar = {

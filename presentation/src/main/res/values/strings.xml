@@ -28,4 +28,5 @@
     <string name="quantity_title">%1$s de pacotes</string>
     <string name="missing">Faltantes</string>
     <string name="package_quantity">%1$s pacotes</string>
+    <string name="retry">Tentar novamente</string>
 </resources>

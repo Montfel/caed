@@ -3,6 +3,7 @@ package com.montfel.caed.presentation.packagedetail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.montfel.caed.domain.repository.HomeRepository
+import com.montfel.caed.domain.util.ResultType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,10 +26,23 @@ class PackageDetailViewModel @Inject constructor(
 
     private fun getPackageDetail(code: String) {
         viewModelScope.launch {
-            val status = homeRepository.getPackageDetail(code)
+            when (val result = homeRepository.getPackageDetail(code)) {
+                is ResultType.Failure -> {
+                    _uiState.update {
+                        it.copy(
+                            stateOfUi = PackageDetailStateOfUi.Error
+                        )
+                    }
+                }
 
-            _uiState.update {
-                it.copy(status = status)
+                is ResultType.Success -> {
+                    _uiState.update {
+                        it.copy(
+                            status = result.data,
+                            stateOfUi = PackageDetailStateOfUi.Success
+                        )
+                    }
+                }
             }
         }
     }

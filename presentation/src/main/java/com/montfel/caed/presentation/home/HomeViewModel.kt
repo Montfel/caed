@@ -3,6 +3,7 @@ package com.montfel.caed.presentation.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.montfel.caed.domain.repository.HomeRepository
+import com.montfel.caed.domain.util.ResultType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,10 +24,20 @@ class HomeViewModel @Inject constructor(
 
     private fun getHome() {
         viewModelScope.launch {
-            val box = homeRepository.getHome()
-
-            _uiState.update {
-                it.copy(box = box)
+            when (val result = homeRepository.getHome()) {
+                is ResultType.Failure -> {
+                    _uiState.update {
+                        it.copy(stateOfUi = HomeStateOfUi.Error)
+                    }
+                }
+                is ResultType.Success -> {
+                    _uiState.update {
+                        it.copy(
+                            box = result.data,
+                            stateOfUi = HomeStateOfUi.Success
+                        )
+                    }
+                }
             }
         }
     }
