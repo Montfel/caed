@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "310ba734-20dd-472e-9370-8048f9740d58",
+		"name": "CAEd",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18956310"
+	},
+	"item": [
+		{
+			"name": "home",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"protocolVersion": "http2"
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/home",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"home"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/home",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"home"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"quantities\": [\n        {\n            \"type\": \"RECEIVED\",\n            \"type_quantity\": 1560,\n            \"missing_quantity\": 440\n        },\n        {\n            \"type\": \"RETURNED\",\n            \"type_quantity\": 1560,\n            \"missing_quantity\": 440\n        }\n    ],\n    \"packages\": [\n        {\n            \"code\": \"16050003517-85\",\n            \"status\": \"RETURNED_PACKAGE\"\n        },\n        {\n            \"code\": \"16050003517-86\",\n            \"status\": \"MISSING_PACKAGE\"\n        },\n        {\n            \"code\": \"16050003517-87\",\n            \"status\": \"RECEIVED_PACKAGE\"\n        },\n        {\n            \"code\": \"16050003517-88\",\n            \"status\": \"MISSING_PACKAGE\"\n        },\n        {\n            \"code\": \"16050003517-89\",\n            \"status\": \"RETURNED_PACKAGE\"\n        }\n    ],\n    \"status\": [\n        {\n            \"date\": \"24/08/23\",\n            \"time\": \"14:32\",\n            \"status\": \"RECEIVED_BOX\",\n            \"description\": \"Coordenador recebeu a caixa da transportadora\"\n        },\n        {\n            \"date\": \"31/08/23\",\n            \"time\": \"18:19\",\n            \"status\": \"OPENED_BOX\",\n            \"description\": \"Coordenador abriu a caixa da transportadora\"\n        },\n        {\n            \"date\": \"07/09/23\",\n            \"time\": \"18:19\",\n            \"status\": \"READ_BOX\",\n            \"description\": \"Coordenador leu todos os pacotes desta caixa\"\n        },\n        {\n            \"date\": \"07/09/23\",\n            \"time\": \"20:19\",\n            \"status\": \"RETURNED_BOX\",\n            \"description\": \"Coordenador devolveu a caixa à transportadora\"\n        }\n    ],\n    \"data\": {\n        \"box_code\": \"16050003517\",\n        \"delivery_point\": \"1ª REGIAO\",\n        \"city\": \"ARACAJU/SE\",\n        \"school\": \"EMEF DEPUTADO JAIME ARAUJO (28031121)\",\n        \"grade\": \"2º ANO EF (ENSINO FUNDAMENTAL)\",\n        \"cv\": \"LÍNGUA PORTUGUESA\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "package_detail/{code}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/package_detail/{code}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"package_detail",
+						"{code}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "85",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/package_detail/16050003517-85",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"package_detail",
+								"16050003517-85"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"date\": \"31/08/23\",\n        \"time\": \"18:19\",\n        \"status\": \"RECEIVED_PACKAGE\",\n        \"description\": \"Coordenador registrou recebimento deste pacote\"\n    },\n    {\n        \"date\": \"07/09/23\",\n        \"time\": \"18:19\",\n        \"status\": \"RETURNED_PACKAGE\",\n        \"description\": \"Coordenador registrou devolução deste pacote\"\n    }\n]"
+				},
+				{
+					"name": "86",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/package_detail/16050003517-86",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"package_detail",
+								"16050003517-86"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				},
+				{
+					"name": "87",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/package_detail/16050003517-87",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"package_detail",
+								"16050003517-87"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"date\": \"31/08/23\",\n        \"time\": \"18:19\",\n        \"status\": \"RECEIVED_PACKAGE\",\n        \"description\": \"Coordenador registrou recebimento deste pacote\"\n    }\n]"
+				},
+				{
+					"name": "88",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/package_detail/16050003517-88",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"package_detail",
+								"16050003517-88"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				},
+				{
+					"name": "89",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/package_detail/16050003517-89",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"package_detail",
+								"16050003517-89"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"date\": \"31/08/23\",\n        \"time\": \"18:19\",\n        \"status\": \"RECEIVED_PACKAGE\",\n        \"description\": \"Coordenador registrou recebimento deste pacote\"\n    },\n    {\n        \"date\": \"07/09/23\",\n        \"time\": \"18:19\",\n        \"status\": \"RETURNED_PACKAGE\",\n        \"description\": \"Coordenador registrou devolução deste pacote\"\n    }\n]"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://5b824f10-9c37-4cd5-a412-e4c0bc32608a.mock.pstmn.io"
+		}
+	]
+}
