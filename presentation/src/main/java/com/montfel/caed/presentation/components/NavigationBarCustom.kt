@@ -14,7 +14,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.montfel.caed.presentation.R
 import com.montfel.caed.presentation.theme.BlueCD
 import com.montfel.caed.presentation.theme.Gray82
 import com.montfel.caed.presentation.theme.Gray33
@@ -25,16 +27,16 @@ fun NavigationBarCustom() {
         listOf(
             NavigationItem(
                 icon = Icons.Default.Home,
-                name = "Início",
+                name = stringResource(R.string.home),
                 selected = true
             ),
             NavigationItem(
                 icon = Icons.Default.Settings,
-                name = "Opções"
+                name = stringResource(R.string.options)
             ),
             NavigationItem(
                 icon = Icons.Default.Info,
-                name = "Tutoriais"
+                name = stringResource(R.string.tutorials)
             ),
         )
 

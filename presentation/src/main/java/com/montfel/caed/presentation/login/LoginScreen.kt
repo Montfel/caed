@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -63,7 +64,7 @@ fun LoginScreen(
         ) {
             TextFieldComponent(
                 text = uiState.user,
-                label = "Usuário",
+                label = stringResource(R.string.user),
                 onValueChange = {
                     viewModel.onEvent(LoginEvent.OnUserChange(it))
                 },
@@ -72,7 +73,7 @@ fun LoginScreen(
 
             TextFieldComponent(
                 text = uiState.password,
-                label = "Senha",
+                label = stringResource(R.string.password),
                 onValueChange = {
                     viewModel.onEvent(LoginEvent.OnPasswordChange(it))
                 },
@@ -94,7 +95,7 @@ fun LoginScreen(
                 .fillMaxWidth()
                 .height(55.dp)
         ) {
-            Text(text = "Entrar")
+            Text(text = stringResource(R.string.enter))
         }
     }
 }

@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.montfel.caed.domain.model.Package
@@ -38,7 +39,7 @@ fun Packages(packages: List<Package>, onClick: (code: String) -> Unit) {
             )
 
             Text(
-                text = "Lista de pacotes",
+                text = stringResource(R.string.package_list),
                 fontWeight = FontWeight.Bold
             )
         }

@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">CAEd</string>
+    <string name="box_status">Status da caixa</string>
+    <string name="box_data">Dados da caixa</string>
+    <string name="code">CÓDIGO</string>
+    <string name="delivery_point">PONTO DE ENTREGA</string>
+    <string name="city">MUNICÍPIO</string>
+    <string name="school">ESCOLA</string>
+    <string name="grade">ANO ESCOLAR/ETAPA</string>
+    <string name="cv">COMPONENTE CURRICULAR</string>
+    <string name="packages">Pacotes</string>
+    <string name="status">Status</string>
+    <string name="data">Dados</string>
+    <string name="packages_list">Listagem de pacotes</string>
+    <string name="user">Usuário</string>
+    <string name="password">Senha</string>
+    <string name="enter">Entrar</string>
+    <string name="home">Início</string>
+    <string name="options">Opções</string>
+    <string name="tutorials">Tutoriais</string>
+    <string name="package_code">Pacote %1$s</string>
+    <string name="package_list">Lista de pacotes</string>
+    <string name="package_status">Status do pacote</string>
+    <string name="receiving">Recebimento</string>
+    <string name="received">Recebidos</string>
+    <string name="returning">Devolução</string>
+    <string name="returned">Devolvidos</string>
+    <string name="quantity_title">%1$s de pacotes</string>
+    <string name="missing">Faltantes</string>
+    <string name="package_quantity">%1$s pacotes</string>
+</resources>

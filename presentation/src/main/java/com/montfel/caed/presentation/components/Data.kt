@@ -11,9 +11,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.montfel.caed.domain.model.Data
+import com.montfel.caed.presentation.R
 
 @Composable
 fun Data(data: Data) {
@@ -23,23 +25,23 @@ fun Data(data: Data) {
         Spacer(modifier = Modifier.height(35.dp))
 
         Text(
-            text = "Dados da caixa",
+            text = stringResource(R.string.box_data),
             fontWeight = FontWeight.Bold
         )
 
         Spacer(modifier = Modifier.height(21.dp))
 
-        DataItem(title = "CÓDIGO", description = data.boxCode)
+        DataItem(title = stringResource(R.string.code), description = data.boxCode)
 
-        DataItem(title = "PONTO DE ENTREGA", description = data.deliveryPoint)
+        DataItem(title = stringResource(R.string.delivery_point), description = data.deliveryPoint)
 
-        DataItem(title = "MUNICÍPIO", description = data.city)
+        DataItem(title = stringResource(R.string.city), description = data.city)
 
-        DataItem(title = "ESCOLA", description = data.school)
+        DataItem(title = stringResource(R.string.school), description = data.school)
 
-        DataItem(title = "ANO ESCOLAR/ETAPA", description = data.grade)
+        DataItem(title = stringResource(R.string.grade), description = data.grade)
 
-        DataItem(title = "COMPONENTE CURRICULAR", description = data.cv)
+        DataItem(title = stringResource(R.string.cv), description = data.cv)
     }
 }
 

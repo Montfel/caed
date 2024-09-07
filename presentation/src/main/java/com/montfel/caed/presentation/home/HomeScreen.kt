@@ -28,14 +28,16 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.montfel.caed.presentation.R
 import com.montfel.caed.presentation.components.BoxStatus
 import com.montfel.caed.presentation.components.Data
 import com.montfel.caed.presentation.components.NavigationBarCustom
-import com.montfel.caed.presentation.components.QuantityCard
 import com.montfel.caed.presentation.components.Packages
+import com.montfel.caed.presentation.components.QuantityCard
 import com.montfel.caed.presentation.theme.Gray
 import com.montfel.caed.presentation.theme.GrayE3
 
@@ -49,13 +51,17 @@ fun HomeScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     var selectedTabIndex by rememberSaveable { mutableIntStateOf(0) }
-    val titles = listOf("Pacotes", "Status", "Dados")
+    val titles = listOf(
+        stringResource(R.string.packages),
+        stringResource(R.string.status),
+        stringResource(R.string.data)
+    )
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Listagem de pacotes")
+                    Text(text = stringResource(R.string.packages_list))
                 },
                 navigationIcon = {
                     IconButton(

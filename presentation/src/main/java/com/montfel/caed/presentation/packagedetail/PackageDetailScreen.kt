@@ -24,9 +24,11 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.montfel.caed.presentation.R
 import com.montfel.caed.presentation.components.NavigationBarCustom
 import com.montfel.caed.presentation.components.PackageStatus
 import com.montfel.caed.presentation.theme.Gray
@@ -42,7 +44,7 @@ fun PackageDetailScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     val selectedTabIndex by rememberSaveable { mutableIntStateOf(0) }
-    val titles = listOf("Status", "Dados")
+    val titles = listOf(stringResource(R.string.status), stringResource(R.string.data))
 
     LaunchedEffect(Unit) {
         viewModel.onEvent(PackageDetailEvent.GetPackageDetail(code))
@@ -52,7 +54,7 @@ fun PackageDetailScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Pacote $code")
+                    Text(text = stringResource(R.string.package_code, code))
                 },
                 navigationIcon = {
                     IconButton(

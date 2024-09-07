@@ -19,10 +19,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.montfel.caed.domain.model.Quantity
 import com.montfel.caed.domain.model.QuantityType
+import com.montfel.caed.presentation.R
 import com.montfel.caed.presentation.theme.Blue36
 import com.montfel.caed.presentation.theme.BlueAE
 import com.montfel.caed.presentation.theme.GrayCC
@@ -30,8 +32,21 @@ import com.montfel.caed.presentation.theme.GrayCC
 @Composable
 fun QuantityCard(quantity: Quantity) {
     val (title, typeName, color) = when (quantity.type) {
-        QuantityType.RECEIVED -> Triple("Recebimento", "Recebidos", BlueAE)
-        QuantityType.RETURNED -> Triple("Devolução", "Devolvidos", Blue36)
+        QuantityType.RECEIVED -> {
+            Triple(
+                stringResource(R.string.receiving),
+                stringResource(R.string.received),
+                BlueAE
+            )
+        }
+
+        QuantityType.RETURNED -> {
+            Triple(
+                stringResource(R.string.returning),
+                stringResource(R.string.returned),
+                Blue36
+            )
+        }
     }
     val totalQuantity = quantity.typeQuantity + quantity.missingQuantity
 
@@ -48,7 +63,7 @@ fun QuantityCard(quantity: Quantity) {
             modifier = Modifier.padding(20.dp)
         ) {
             Text(
-                text = "$title de pacotes",
+                text = stringResource(R.string.quantity_title, title),
                 fontWeight = FontWeight.Bold
             )
 
@@ -85,7 +100,7 @@ fun QuantityCard(quantity: Quantity) {
                             fontWeight = FontWeight.Bold
                         )
 
-                        Text(text = "${quantity.typeQuantity} pacotes")
+                        Text(text = stringResource(R.string.package_quantity, quantity.typeQuantity))
                     }
                 }
 
@@ -108,11 +123,11 @@ fun QuantityCard(quantity: Quantity) {
 
                     Column {
                         Text(
-                            text = "Faltantes",
+                            text = stringResource(R.string.missing),
                             fontWeight = FontWeight.Bold
                         )
 
-                        Text(text = "${quantity.missingQuantity} pacotes")
+                        Text(text = stringResource(R.string.package_quantity, quantity.missingQuantity))
                     }
                 }
 
